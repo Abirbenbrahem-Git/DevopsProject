@@ -25,7 +25,7 @@ pipeline {
             }
         }
 
-        stage('Archive Artifacts') {
+        stage('test .jar') {
             steps {
                 archiveArtifacts artifacts: '**/target/*.jar', followSymlinks: false
             }
