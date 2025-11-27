@@ -21,7 +21,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'mvn test -Dmaven.test.failure.ignore=true' -Dspring.profiles.active=test'         
+                sh 'mvn test -Dmaven.test.failure.ignore=false -Dspring.profiles.active=test'      
                 junit '**/target/surefire-reports/*.xml'  
             }
         }
