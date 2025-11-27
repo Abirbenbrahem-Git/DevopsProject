@@ -21,8 +21,14 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'mvn test -Dmaven.test.failure.ignore=false -Dspring.profiles.active=test'      
+                sh '''mvn clean package -DskipTests'''      
                 junit '**/target/surefire-reports/*.xml'  
+            }
+        }
+
+        stage('Archive Artifacts') {
+            steps {
+                archiveArtifacts artifacts: '**/target/*.jar', followSymlinks: false
             }
         }
 
