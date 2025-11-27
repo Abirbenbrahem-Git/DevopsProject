@@ -2,7 +2,8 @@ pipeline {
     agent any
 
     stages {
-       stage('Checkout') {
+
+        stage('Checkout') {
             steps {
                 checkout scmGit(
                     branches: [[name: '*/main']],
@@ -20,7 +21,8 @@ pipeline {
 
         stage('Test') {
             steps {
-                junit '**/target/surefire-reports/*.xml'
+                sh 'mvn test'         
+                junit '**/target/surefire-reports/*.xml'  
             }
         }
 
